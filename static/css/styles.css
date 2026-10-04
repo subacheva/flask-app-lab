@@ -20,8 +20,8 @@ a{color:inherit}
 .eyebrow,.section-index{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#8aa844;margin-right:.5rem;vertical-align:1px}
 h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:-.055em}
-.hero h1{font-size:clamp(3rem,7vw,5.6rem);line-height:1.02;font-weight:700;margin:1.1rem 0}
-.hero h1 span{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.07em}
+.hero h1,.contact-intro h1{font-size:clamp(3rem,7vw,5.6rem);line-height:1.02;font-weight:700;margin:1.1rem 0}
+.hero h1 span,.contact-intro h1 span{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.07em}
 .hero-role{font-weight:700;font-size:1.08rem;margin:.9rem 0}
 .hero-role span{color:#93a084;margin:0 .3rem}
 .hero-summary{max-width:540px;color:var(--muted);font-size:1.02rem}
@@ -46,5 +46,16 @@ h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:-.055em}
 .tech-list{display:flex;flex-wrap:wrap;gap:.65rem}
 .tech-list span{padding:.48rem .85rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem;font-weight:600;background:#fbfcf9}
 .text-link{display:inline-block;margin-top:1rem;font-size:.9rem;font-weight:700;text-decoration:none;border-bottom:1px solid #aab49f;padding-bottom:.2rem}
+.contact-page{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:6rem 0 7rem;align-items:start;min-height:70vh}
+.contact-intro h1{margin:1.3rem 0}
+.contact-intro>p:not(.eyebrow){max-width:420px;color:var(--muted)}
+.contact-note{display:flex;gap:.9rem;align-items:center;margin-top:2rem;padding:1rem 1.1rem;background:#edf1e6;border-radius:12px;max-width:410px}
+.contact-note-icon{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:50%;background:var(--green)}
+.contact-note p{font-size:.82rem;color:#56614e;margin:0}
+.contact-form{padding:2rem;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 15px 45px rgba(31,45,36,.04)}
+.form-label{font-size:.87rem;font-weight:700}
+.form-control{border-color:var(--line);border-radius:9px;padding:.85rem 1rem;background:#fbfcfa}
+.form-control:focus{border-color:#9cb660;box-shadow:0 0 0 .2rem rgba(200,241,105,.25)}
+.form-caption{margin:.9rem 0 0;color:var(--muted);font-size:.75rem}
 .site-footer{padding:1.5rem 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 .site-footer a{text-decoration:none;font-weight:600}
