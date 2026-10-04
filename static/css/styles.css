@@ -59,3 +59,4 @@ h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:-.055em}
 .form-caption{margin:.9rem 0 0;color:var(--muted);font-size:.75rem}
 .site-footer{padding:1.5rem 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 .site-footer a{text-decoration:none;font-weight:600}
+@media(max-width:767.98px){.hero{padding:3.5rem 0}.hero h1,.contact-intro h1{font-size:clamp(2.8rem,13vw,4.2rem)}.portrait-frame{max-width:290px}.section-nav{gap:.5rem 1.1rem}.resume-grid,.contact-page{grid-template-columns:1fr;column-gap:0}.resume-section{padding:2rem 0}.resume-section-wide{grid-column:auto}.contact-page{gap:2rem;padding:3.5rem 0 4rem}.contact-form{padding:1.3rem}.navbar-collapse{padding:.6rem 0 1rem}.navbar-nav{align-items:stretch!important}.site-footer{padding:1.2rem 0}}
