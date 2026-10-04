@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<article>
+  <section class="hero row align-items-center g-5" aria-labelledby="person-name">
+    <div class="col-lg-7 order-2 order-lg-1">
+      <p class="eyebrow"><span class="status-dot"></span> Відкрита до нових можливостей</p>
+      <h1 id="person-name">Субачева<br><span>Уляна Андріївна</span></h1>
+      <p class="hero-role">Junior DevOps Engineer <span aria-hidden="true">/</span> Python Developer</p>
+      <p class="hero-summary">Студентка третього курсу, яка розвивається у DevOps, автоматизації та хмарних технологіях. Вивчаю інструменти для розгортання й підтримки вебзастосунків.</p>
+      <div class="d-flex flex-wrap gap-3 mt-4">
+        <a class="btn btn-outline-dark" href="#about">Дізнатися більше <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="col-lg-5 order-1 order-lg-2 text-center">
+      <div class="portrait-frame">
+        <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Ілюстративний портрет Уляни Субачевої" class="portrait">
+        <span class="portrait-note">Постійно навчаюся&nbsp; ✳</span>
+      </div>
+    </div>
+  </section>
+
+  <nav class="section-nav" aria-label="Навігація резюме">
+    <a href="#about">Про себе</a><a href="#education">Освіта</a><a href="#skills">Навички</a><a href="#technology">Технології</a><a href="#projects">Проєкти</a>
+  </nav>
+
+  <div class="resume-grid">
+    <section class="resume-section" id="about">
+      <p class="section-index">01 / ПРОФІЛЬ</p><h2>Про себе</h2>
+      <p>Мені 19 років, навчаюся на 3-му курсі. Активно цікавлюся напрямком DevOps, автоматизацією та хмарними технологіями. Навчаюся самостійно, регулярно опановую нові інструменти та прагну розвиватися у сфері розгортання та підтримки вебдодатків.</p>
+    </section>
+    <section class="resume-section" id="education">
+      <p class="section-index">02 / НАВЧАННЯ</p><h2>Освіта</h2>
+      <div class="timeline-item"><span class="timeline-mark"></span><div><h3>Карпатський національний університет імені Василя Стефаника</h3><p>3-й курс</p></div></div>
+    </section>
+    <section class="resume-section" id="skills">
+      <p class="section-index">03 / СИЛЬНІ СТОРОНИ</p><h2>Навички</h2>
+      <ul class="clean-list">
+        <li>Швидке та ефективне самостійне навчання</li><li>Розуміння основ DevOps і принципів CI/CD</li><li>Базове адміністрування Linux</li><li>Робота з Git та репозиторіями GitHub</li>
+      </ul>
+    </section>
+    <section class="resume-section" id="technology">
+      <p class="section-index">04 / ІНСТРУМЕНТИ</p><h2>Технології</h2>
+      <div class="tech-list"><span>Python</span><span>Flask</span><span>Git</span><span>GitHub</span><span>Linux</span><span>Docker</span><span>Render Cloud</span><span>HTML / CSS</span></div>
+    </section>
+    <section class="resume-section resume-section-wide" id="projects">
+      <p class="section-index">05 / ПРАКТИКА</p><h2>Досвід роботи та проєкти</h2>
+      <p>Комерційний досвід роботи наразі відсутній, проте маю практичний досвід виконання навчальних проєктів. Працюю над розвитком навичок у Python, веброзробці та розгортанні застосунків.</p>
+    </section>
+  </div>
+</article>
+{% endblock %}
