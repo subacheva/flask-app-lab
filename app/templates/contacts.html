@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="contact-page" aria-labelledby="contact-title">
+  <div class="contact-intro">
+    <p class="eyebrow"><span class="status-dot"></span> Буду рада вашому повідомленню</p>
+    <h1 id="contact-title">Давайте<br><span>поговоримо.</span></h1>
+    <p>Є пропозиція щодо стажування, проєкту чи співпраці? Залиште повідомлення у формі.</p>
+    <div class="contact-note"><span class="contact-note-icon">✳</span><p>Ця форма є демонстраційною: повідомлення не надсилається на пошту.</p></div>
+  </div>
+  <form class="contact-form" method="post" action="{{ url_for('contacts') }}#message" id="message">
+    {% if sent %}<div class="alert alert-success" role="status">Дякую! Форму успішно заповнено. Це демонстраційна сторінка, тому повідомлення не було надіслано.</div>{% endif %}
+    <div class="mb-4"><label for="name" class="form-label">Ваше ім’я</label><input class="form-control" id="name" name="name" type="text" autocomplete="name" placeholder="Як до вас звертатися?" required></div>
+    <div class="mb-4"><label for="email" class="form-label">Електронна пошта</label><input class="form-control" id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
+    <div class="mb-4"><label for="message-text" class="form-label">Повідомлення</label><textarea class="form-control" id="message-text" name="message" rows="5" placeholder="Кілька слів про вашу пропозицію…" required></textarea></div>
+    <button class="btn btn-accent" type="submit">Надіслати повідомлення <span aria-hidden="true">↗</span></button>
+    <p class="form-caption">Натискаючи кнопку, ви побачите підтвердження заповнення форми.</p>
+  </form>
+</section>
+{% endblock %}
