@@ -8,7 +8,7 @@ def greetings(name):
     age = request.args.get("age", "")
     return render_template(
         "users/hi.html",
-        title=f"???????, {name} | ???????????",
+        title=f"Вітаємо, {name} | Користувачі",
         name=name.upper(),
         age=age,
     )

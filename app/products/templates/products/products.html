@@ -2,16 +2,16 @@
 {% block content %}
 <section class="catalog-page">
   <p class="eyebrow">Blueprint products</p>
-  <h1>??????? ???????</h1>
+  <h1>Каталог товарів</h1>
   <div class="product-grid">
     {% for product in products %}
     <article class="product-card">
-      <p class="product-id">????? ? {{ product.id }}</p>
+      <p class="product-id">Товар № {{ product.id }}</p>
       <h2>{{ product.name }}</h2>
       <p>{{ product.content }}</p>
       <div class="product-card-footer">
         <strong>${{ product.price }}</strong>
-        <a class="btn btn-accent" href="{{ url_for('products.detail_product', product_id=product.id) }}">??????????</a>
+        <a class="btn btn-accent" href="{{ url_for('products.detail_product', product_id=product.id) }}">Детальніше</a>
       </div>
     </article>
     {% endfor %}

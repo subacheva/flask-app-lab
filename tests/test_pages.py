@@ -11,7 +11,7 @@ class PagesTestCase(unittest.TestCase):
     def test_homepage_uses_base_template(self):
         response = self.client.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertIn("???????? ????????? Flask".encode(), response.data)
+        self.assertIn("Модульна структура Flask".encode(), response.data)
         self.assertIn(b"site-header", response.data)
 
     def test_resume_and_contacts_remain_available(self):
