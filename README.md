@@ -29,20 +29,6 @@ python run.py
 - `/users/admin` — перенаправлення до привітання адміністратора;
 - `/products/` і `/products/<id>` — каталог та сторінка товару.
 
-## Скріншоти
-
-**Сторінка входу**
-
-![Форма входу](docs/lab4/screenshots/login.png)
-
-**Профіль зі світлою темою та збереженою cookie**
-
-![Профіль — світла тема](docs/lab4/screenshots/profile-light.png)
-
-**Профіль із темною темою**
-
-![Профіль — темна тема](docs/lab4/screenshots/profile-dark.png)
-
 ## Тести
 
 ```powershell
