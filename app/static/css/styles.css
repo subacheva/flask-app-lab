@@ -95,7 +95,12 @@ h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:-.055em}
 body.theme-dark{background:var(--paper);color:var(--ink)}
 .theme-dark .site-header{background:#1d2923}
 .theme-dark .site-footer{color:var(--muted)}
+.theme-dark .navbar-brand,.theme-dark .nav-link{color:var(--ink)}
+.theme-dark .text-muted{color:var(--muted)!important}
 .theme-dark .auth-card,.theme-dark .profile-panel,.theme-dark .product-card,.theme-dark .user-menu{background:#202c26;border-color:var(--line)}
 .theme-dark .form-control,.theme-dark .table{color:var(--ink);background:#202c26;border-color:var(--line)}
+.theme-dark .form-control::placeholder{color:var(--muted);opacity:1}
+.theme-dark .table{--bs-table-color:var(--ink);--bs-table-bg:#202c26;--bs-table-border-color:var(--line);--bs-table-striped-bg:#26342c}
+.theme-dark .table>:not(caption)>*>*{color:var(--ink);background-color:#202c26;box-shadow:inset 0 0 0 9999px #202c26}
 .theme-dark .btn-outline-dark{color:var(--ink);border-color:#849087}
 .theme-dark .btn-outline-dark:hover{color:#17211d;background:#eef2ec}
