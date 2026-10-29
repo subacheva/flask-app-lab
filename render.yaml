@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: flask-app-lab4-subacheva
+    runtime: python
+    plan: free
+    branch: lab4
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true

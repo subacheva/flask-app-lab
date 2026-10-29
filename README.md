@@ -34,3 +34,7 @@ python run.py
 ```powershell
 python -m unittest discover tests -v
 ```
+
+## Розгортання на Render
+
+Файл `render.yaml` налаштовує вебсервіс для гілки `lab4`. У Render Dashboard створіть новий Blueprint для цього репозиторію, виберіть `render.yaml` і застосуйте конфігурацію. Render встановить залежності, запустить Gunicorn і згенерує секретний ключ сесій.
