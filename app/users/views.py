@@ -45,7 +45,6 @@ def login():
         if username == DEMO_USERNAME and password == DEMO_PASSWORD:
             session.clear()
             session["username"] = username
-            session["theme"] = "light"
             flash("Ви успішно увійшли в систему.", "success")
             return redirect(url_for("users.profile"))
 
@@ -61,7 +60,9 @@ def profile():
         flash("Увійдіть, щоб переглянути профіль.", "error")
         return redirect(url_for("users.login"))
 
-    session["theme"] = session.get("theme", "light")
+    theme = request.cookies.get("profile_theme", "light")
+    if theme not in {"light", "dark"}:
+        theme = "light"
     cookies = [
         {"key": key, "value": value}
         for key, value in sorted(request.cookies.items())
@@ -71,7 +72,7 @@ def profile():
         "users/profile.html",
         title="Профіль",
         username=username,
-        theme=session["theme"],
+        theme=theme,
         cookies=cookies,
     )
 
@@ -148,6 +149,14 @@ def set_theme(theme):
         return redirect(url_for("users.login"))
     if theme not in {"light", "dark"}:
         abort(404)
-    session["theme"] = theme
+    response = redirect(url_for("users.profile"))
+    response.set_cookie(
+        "profile_theme",
+        theme,
+        max_age=MAX_COOKIE_AGE,
+        httponly=True,
+        secure=current_app.config["SESSION_COOKIE_SECURE"],
+        samesite="Lax",
+    )
     flash("Кольорову схему оновлено.", "success")
-    return redirect(url_for("users.profile"))
+    return response

@@ -66,10 +66,15 @@ class AuthProfileTestCase(unittest.TestCase):
         self.assertIsNone(self.client.get_cookie("one"))
         self.assertIsNone(self.client.get_cookie("two"))
 
-    def test_theme_is_saved_in_session(self):
+    def test_theme_is_remembered_after_logout_and_login(self):
         self.login()
         response = self.client.post("/users/profile/theme/dark", follow_redirects=True)
         self.assertEqual(response.status_code, 200)
+        self.assertIn(b'<body class="theme-dark">', response.data)
+        self.assertEqual(self.client.get_cookie("profile_theme").value, "dark")
+
+        self.client.post("/users/logout")
+        response = self.login()
         self.assertIn(b'<body class="theme-dark">', response.data)
 
 
