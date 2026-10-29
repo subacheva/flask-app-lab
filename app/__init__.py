@@ -1,6 +1,11 @@
+import os
+
 from flask import Flask
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get(
+    "SECRET_KEY", "local-development-key-change-before-deployment"
+)
 
 from app import views  # noqa: E402,F401
 from app.products import products_bp  # noqa: E402

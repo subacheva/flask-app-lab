@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="profile-page{% if theme == 'dark' %} theme-dark{% endif %}">
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+    <div>
+      <p class="eyebrow">Особистий кабінет</p>
+      <h1>Вітаємо, {{ username }}!</h1>
+      <p class="text-muted">Ваш профіль і налаштування браузера.</p>
+    </div>
+    <div class="profile-actions" aria-label="Кольорова схема">
+      <form method="post" action="{{ url_for('users.set_theme', theme='light') }}"><button class="btn btn-outline-dark" type="submit"{% if theme == 'light' %} aria-pressed="true"{% endif %}>Світла тема</button></form>
+      <form method="post" action="{{ url_for('users.set_theme', theme='dark') }}"><button class="btn btn-outline-dark" type="submit"{% if theme == 'dark' %} aria-pressed="true"{% endif %}>Темна тема</button></form>
+      <form method="post" action="{{ url_for('users.logout') }}"><button class="btn btn-accent" type="submit">Вийти</button></form>
+    </div>
+  </div>
+
+  <section class="profile-panel" aria-labelledby="cookie-add-heading">
+    <h2 id="cookie-add-heading">Додати cookie</h2>
+    <form class="row g-3 align-items-end" method="post" action="{{ url_for('users.manage_cookies') }}">
+      <input type="hidden" name="action" value="add">
+      <div class="col-md-4"><label class="form-label" for="cookie-key">Ключ</label><input class="form-control" id="cookie-key" name="key" maxlength="128" required></div>
+      <div class="col-md-4"><label class="form-label" for="cookie-value">Значення</label><input class="form-control" id="cookie-value" name="value" maxlength="3000" required></div>
+      <div class="col-md-3"><label class="form-label" for="cookie-age">Термін дії, секунд</label><input class="form-control" id="cookie-age" name="max_age" type="number" min="1" max="31536000" placeholder="До закриття браузера"></div>
+      <div class="col-md-1"><button class="btn btn-accent" type="submit">Додати</button></div>
+    </form>
+  </section>
+
+  <section class="profile-panel" aria-labelledby="cookie-list-heading">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+      <h2 class="mb-0" id="cookie-list-heading">Збережені cookie</h2>
+      <form method="post" action="{{ url_for('users.manage_cookies') }}" onsubmit="return confirm('Видалити всі cookie цього сайту?')">
+        <input type="hidden" name="action" value="delete_all">
+        <button class="btn btn-outline-danger" type="submit">Видалити всі</button>
+      </form>
+    </div>
+    {% if cookies %}
+      <div class="table-responsive"><table class="table cookie-table align-middle">
+        <thead><tr><th scope="col">Ключ</th><th scope="col">Значення</th><th scope="col">Дія</th></tr></thead>
+        <tbody>{% for cookie in cookies %}<tr>
+          <td>{{ cookie.key }}</td><td>{{ cookie.value }}</td>
+          <td><form method="post" action="{{ url_for('users.manage_cookies') }}" class="d-inline-flex gap-2">
+            <input type="hidden" name="action" value="delete"><input type="hidden" name="key" value="{{ cookie.key }}">
+            <button class="btn btn-sm btn-outline-danger" type="submit" aria-label="Видалити cookie {{ cookie.key }}">Видалити</button>
+          </form></td>
+        </tr>{% endfor %}</tbody>
+      </table></div>
+    {% else %}<p class="text-muted mb-0">Cookie ще не збережено.</p>{% endif %}
+  </section>
+</section>
+{% endblock %}

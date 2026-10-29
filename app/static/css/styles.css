@@ -82,3 +82,20 @@ h1,h2,h3{font-family:'Manrope',sans-serif;letter-spacing:-.055em}
 .product-detail{max-width:760px}
 .product-price{margin:1.5rem 0}
 @media(max-width:767.98px){.user-layout{grid-template-columns:1fr;gap:0}.user-menu{margin:1.5rem 0 0}.user-greeting,.product-detail,.home-card{padding:3rem 0}}
+
+/* Lab 4 authentication and profile */
+.flash-messages{padding-top:1rem}
+.auth-card,.profile-panel{padding:2rem;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 15px 45px rgba(31,45,36,.04)}
+.auth-page,.profile-page{padding:3rem 0 5rem}
+.auth-card{max-width:520px;margin:0 auto}
+.profile-panel{margin-top:1.5rem}
+.profile-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+.cookie-table{overflow-wrap:anywhere}
+.theme-dark{--ink:#eef2ec;--muted:#b2bcb4;--paper:#17211d;--line:#37443c;--green:#b6df61}
+body.theme-dark{background:var(--paper);color:var(--ink)}
+.theme-dark .site-header{background:#1d2923}
+.theme-dark .site-footer{color:var(--muted)}
+.theme-dark .auth-card,.theme-dark .profile-panel,.theme-dark .product-card,.theme-dark .user-menu{background:#202c26;border-color:var(--line)}
+.theme-dark .form-control,.theme-dark .table{color:var(--ink);background:#202c26;border-color:var(--line)}
+.theme-dark .btn-outline-dark{color:var(--ink);border-color:#849087}
+.theme-dark .btn-outline-dark:hover{color:#17211d;background:#eef2ec}

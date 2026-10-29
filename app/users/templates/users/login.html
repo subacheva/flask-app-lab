@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Особистий кабінет</p>
+    <h1>Вхід</h1>
+    <p class="text-muted">Увійдіть, щоб відкрити профіль і керувати налаштуваннями.</p>
+    <form method="post" action="{{ url_for('users.login') }}">
+      <div class="mb-3">
+        <label class="form-label" for="username">Ім’я користувача</label>
+        <input class="form-control" id="username" name="username" autocomplete="username" required>
+      </div>
+      <div class="mb-4">
+        <label class="form-label" for="password">Пароль</label>
+        <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-accent" type="submit">Увійти</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
