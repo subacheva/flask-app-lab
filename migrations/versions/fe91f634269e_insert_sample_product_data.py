@@ -40,5 +40,9 @@ def downgrade():
         sa.text("DELETE FROM products WHERE name = 'Migration sample product'")
     )
     op.execute(
-        sa.text("DELETE FROM categories WHERE name = 'Migration samples'")
+        sa.text(
+            "DELETE FROM categories WHERE name = 'Migration samples' "
+            "AND NOT EXISTS (SELECT 1 FROM products "
+            "WHERE products.category_id = categories.id)"
+        )
     )
