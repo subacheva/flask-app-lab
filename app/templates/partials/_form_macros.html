@@ -1,0 +1,31 @@
+{% macro render_field(field, rows=None, cols=None) %}
+  <div class="mb-4 form-field{% if field.errors %} has-errors{% endif %}">
+    {{ field.label(class_='form-label') }}
+    {% if rows %}
+      {{ field(class_='form-control', rows=rows, cols=cols or 40) }}
+    {% elif field.type == 'SubmitField' %}
+      {{ field(class_='btn btn-accent') }}
+    {% else %}
+      {{ field(class_='form-control') }}
+    {% endif %}
+    {% if field.errors %}
+      <ul class="field-errors" role="alert">
+        {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro render_product_field(field, rows=None, cols=None) %}
+  <div class="mb-3{% if field.errors %} has-errors{% endif %}">
+    {{ field.label(class_='form-label') }}
+    {% if field.type == 'SubmitField' %}
+      {{ field(class_='btn btn-accent') }}
+    {% elif field.type == 'TextAreaField' %}
+      {{ field(class_='form-control', rows=rows or 5, cols=cols or 40) }}
+    {% else %}
+      {{ field(class_='form-control') }}
+    {% endif %}
+    {% for error in field.errors %}<div class="field-error" role="alert">{{ error }}</div>{% endfor %}
+  </div>
+{% endmacro %}
