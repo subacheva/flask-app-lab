@@ -38,3 +38,10 @@ python -m unittest discover tests -v
 ## Розгортання на Render
 
 Файл `render.yaml` налаштовує вебсервіс для гілки `lab4`. У Render Dashboard створіть новий Blueprint для цього репозиторію, виберіть `render.yaml` і застосуйте конфігурацію. Render встановить залежності, запустить Gunicorn і згенерує секретний ключ сесій.
+
+## Лабораторна робота 5
+
+- Контактна WTF-форма: `/contact` (також доступний сумісний шлях `/contacts`). Дані записуються у `logs/contacts.log`.
+- Каталог TinyDB: `/product`; додавання `/product/add`; деталі `/product/<id>`; редагування `/product/<id>/edit`; видалення `/product/<id>/delete`.
+- JSON-сховище: `data/products.json`; завантаження зображень: `app/products/static/uploads/` (до 2 МБ).
+- Тести: `python -m unittest discover tests -v`.
