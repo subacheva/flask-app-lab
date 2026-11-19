@@ -25,6 +25,7 @@ def create_app(config_name=None):
     from app.products import products_bp
     from app.users import users_bp
     from app.posts import models as post_models  # noqa: F401
+    from app.products import models as product_models  # noqa: F401
 
     views.register_main_routes(application)
     application.register_blueprint(users_bp, url_prefix="/users")
