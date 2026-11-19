@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="delete-confirm-card"><p class="eyebrow">Підтвердження</p><h1>Видалити товар «{{ product.name }}»?</h1><p>Цю дію не можна скасувати.</p><form method="post" action="{{ url_for('products.delete_product_page', product_id=product.id) }}">{{ form.hidden_tag() }}<button class="btn btn-danger" type="submit">Так, видалити</button><a class="btn btn-outline-dark" href="{{ url_for('products.product_detail_page', product_id=product.id) }}">Скасувати</a></form></section>
+{% endblock %}

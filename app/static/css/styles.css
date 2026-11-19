@@ -104,3 +104,17 @@ body.theme-dark{background:var(--paper);color:var(--ink)}
 .theme-dark .table>:not(caption)>*>*{color:var(--ink);background-color:#202c26;box-shadow:inset 0 0 0 9999px #202c26}
 .theme-dark .btn-outline-dark{color:var(--ink);border-color:#849087}
 .theme-dark .btn-outline-dark:hover{color:#17211d;background:#eef2ec}
+
+/* Lab 5 forms and TinyDB catalog */
+.field-errors,.field-error{margin:.45rem 0 0;padding-left:1.15rem;color:#b42318;font-size:.85rem}
+.form-field.has-errors .form-control{border-color:#b42318}
+.product-catalog-page{padding:3.5rem 0 5rem}
+.product-catalog-page h1,.product-form-card h1,.store-product-detail h1,.delete-confirm-card h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700}
+.store-product-image{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:1rem}
+.detail-product-image{display:block;max-width:min(100%,560px);max-height:420px;object-fit:contain;border-radius:14px;margin:1.5rem 0;background:#eef1e9}
+.product-form-page{padding:3rem 0 5rem}
+.product-form-card,.delete-confirm-card,.store-product-detail{max-width:780px;margin:0 auto;padding:2rem;background:#fff;border:1px solid var(--line);border-radius:16px}
+.product-form-card .form-control{margin-top:.3rem}
+.empty-products{margin:2rem 0;padding:2rem;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
+.store-product-detail{margin-top:3rem;margin-bottom:4rem}
+.store-product-detail .product-description{white-space:pre-wrap;color:var(--muted)}

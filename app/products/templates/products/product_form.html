@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% from 'partials/_form_macros.html' import render_product_field %}
+{% block content %}
+<section class="product-form-page"><div class="product-form-card">
+  <p class="eyebrow">TinyDB · Flask-WTF</p><h1>{{ heading }}</h1>
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    {{ render_product_field(form.name) }}
+    {{ render_product_field(form.content, rows=5, cols=40) }}
+    {{ render_product_field(form.price) }}
+    {{ render_product_field(form.category) }}
+    {{ render_product_field(form.quantity) }}
+    {{ render_product_field(form.image) }}
+    {{ render_product_field(form.submit) }}
+    <a class="text-link" href="{{ url_for('products.all_products_page') }}">Скасувати</a>
+  </form>
+</div></section>
+{% endblock %}

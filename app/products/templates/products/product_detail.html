@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="store-product-detail">
+  <p class="eyebrow">{{ product.category }} · {{ product.created_at }}</p><h1>{{ product.name }}</h1>
+  {% if product.image %}<img class="detail-product-image" src="{{ url_for('products.static', filename=product.image) }}" alt="{{ product.name }}">{% else %}<img class="detail-product-image" src="{{ url_for('products.static', filename='images/product-default.svg') }}" alt="Зображення відсутнє">{% endif %}
+  <p class="product-description">{{ product.content }}</p><p><strong>{{ '%.2f'|format(product.price) }} ₴</strong> · Кількість: {{ product.quantity }}</p>
+  <div class="d-flex flex-wrap gap-2"><a class="btn btn-accent" href="{{ url_for('products.edit_product_page', product_id=product.id) }}">Редагувати</a><a class="btn btn-outline-danger" href="{{ url_for('products.delete_product_page', product_id=product.id) }}">Видалити</a><a class="btn btn-outline-dark" href="{{ url_for('products.all_products_page') }}">До каталогу</a></div>
+</article>
+{% endblock %}

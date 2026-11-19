@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% from 'partials/_form_macros.html' import render_product_field %}
+{% block content %}
+<section class="product-catalog-page">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3"><div><p class="eyebrow">TinyDB · JSON-сховище</p><h1>Каталог товарів</h1></div><a class="btn btn-accent" href="{{ url_for('products.add_product_page') }}">Додати товар</a></div>
+  {% if products %}<div class="product-grid">
+    {% for product in products %}<article class="product-card">
+      {% if product.image %}<img class="store-product-image" src="{{ url_for('products.static', filename=product.image) }}" alt="{{ product.name }}">{% else %}<img class="store-product-image" src="{{ url_for('products.static', filename='images/product-default.svg') }}" alt="Зображення відсутнє">{% endif %}
+      <p class="product-id">{{ product.category }} · {{ product.created_at[:10] }}</p><h2>{{ product.name }}</h2><p>{{ product.content[:100] }}{% if product.content|length > 100 %}…{% endif %}</p>
+      <div class="product-card-footer"><strong>{{ '%.2f'|format(product.price) }} ₴</strong><span>Кількість: {{ product.quantity }}</span></div>
+      <a class="btn btn-outline-dark mt-3" href="{{ url_for('products.product_detail_page', product_id=product.id) }}">Переглянути товар</a>
+    </article>{% endfor %}
+  </div>{% else %}<div class="empty-products"><p>Поки що товарів немає.</p><a href="{{ url_for('products.add_product_page') }}">Додати перший товар</a></div>{% endif %}
+</section>
+{% endblock %}
