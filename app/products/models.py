@@ -1,4 +1,4 @@
-from sqlalchemy import ForeignKey
+from sqlalchemy import Boolean, ForeignKey, true
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.extensions import db
@@ -23,6 +23,9 @@ class Product(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(db.String(100), nullable=False)
     price: Mapped[float] = mapped_column(db.Float, nullable=False)
+    active: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=True, server_default=true()
+    )
     category_id: Mapped[int | None] = mapped_column(ForeignKey("categories.id"), nullable=True)
     category: Mapped[Category | None] = relationship("Category", back_populates="products")
 
