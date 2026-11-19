@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="delete-confirm-card"><p class="eyebrow">Підтвердження видалення</p><h1>Видалити пост «{{ post.title }}»?</h1><p>Після підтвердження пост буде видалено з бази.</p><form method="post">{{ form.hidden_tag() }}<button class="btn btn-danger" type="submit">Так, видалити</button><a class="btn btn-outline-dark" href="{{ url_for('posts.detail_post', post_id=post.id) }}">Скасувати</a></form></section>
+{% endblock %}

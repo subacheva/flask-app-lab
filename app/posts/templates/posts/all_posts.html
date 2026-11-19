@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block css %}{% endblock %}
+{% block content %}
+<section class="posts-page"><div class="posts-heading"><div><p class="eyebrow">Публікації</p><h1>Усі пости</h1></div><a class="btn btn-accent" href="{{ url_for('posts.create_post') }}">Add Post</a></div>
+{% if posts %}<div class="posts-grid">{% for post in posts %}<article class="post-card"><img src="{{ url_for('static', filename='images/postdefault.svg') }}" alt="Зображення публікації"><p class="eyebrow">{{ post.category }} · {{ post.posted.strftime('%d.%m.%Y %H:%M') }}</p><h2>{{ post.title }}</h2><p>{{ post.content[:100] }}{% if post.content|length > 100 %}…{% endif %}</p><a class="text-link" href="{{ url_for('posts.detail_post', post_id=post.id) }}">Переглянути пост</a></article>{% endfor %}</div>{% else %}<p class="empty-posts">Поки що немає опублікованих постів.</p>{% endif %}</section>
+{% endblock %}

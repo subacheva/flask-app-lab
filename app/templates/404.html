@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="error-page"><p class="eyebrow">Помилка 404</p><h1>Сторінку не знайдено</h1><p>Можливо, адресу змінено або сторінки більше немає.</p><a class="btn btn-accent" href="{{ url_for('home') }}">На головну</a></section>
+{% endblock %}

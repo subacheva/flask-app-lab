@@ -11,3 +11,6 @@ __pycache__/
 logs/
 app/products/static/uploads/*
 !app/products/static/uploads/.gitkeep
+
+instance/
+*.sqlite

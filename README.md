@@ -1,33 +1,43 @@
-# Flask app — лабораторна робота 4
+# Flask labs 3–7
 
-Навчальний Flask-застосунок на Blueprints із входом, профілем, сесіями, flash-повідомленнями, cookie та вибором теми.
+Навчальний Flask-застосунок із Blueprints, формами, TinyDB, SQLAlchemy та міграціями.
 
 ## Запуск
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
-$env:SECRET_KEY = "створіть-власний-випадковий-секретний-ключ"
+Copy-Item .env.example .env  # один раз; задайте власний SECRET_KEY
 python run.py
 ```
 
-Залежності встановлюються командою `pip install -r requirements.txt`.
+Сайт працює на `http://127.0.0.1:5000/` (Flask CLI використовує порт 8080 із `.flaskenv`). Для Flask CLI потрібні залежності з `requirements.txt`.
 
-## Демонстраційний вхід
+## Лабораторна 5
 
-- Ім’я користувача: `student`
-- Пароль: `flask123`
+- Контактна форма з Flask-WTF: `/contact` або `/contacts`; валідні звернення додаються до `logs/contacts.log`.
+- TinyDB JSON-каталог: `/product`; створення `/product/add`; деталі `/product/<id>`; редагування `/product/<id>/edit`; підтвердження/видалення `/product/<id>/delete`.
+- Дані: `data/products.json`; завантажені картинки: `app/products/static/uploads/` (до 2 МБ, PNG/JPG/JPEG).
 
-Ці облікові дані задано в коді як заглушку для лабораторної. У робочому застосунку замініть їх на автентифікацію з постійного сховища й використовуйте безпечне зберігання паролів.
+## Лабораторна 6
 
-## Сторінки
+- Application factory: `create_app("development")`, `create_app("testing")` або `create_app("production")`.
+- SQLite-файл створюється в `instance/data.sqlite`.
+- Пост-маршрути: `/post`, `/post/create`, `/post/<id>`, `/post/<id>/update`, `/post/<id>/delete`.
+- Перше налаштування міграцій (виконати один раз):
 
-- `/` — головна;
-- `/resume` і `/contacts` — резюме та контакти;
-- `/users/login` — форма входу;
-- `/users/profile` — профіль, керування cookie та вибір теми;
-- `/users/hi/<name>?age=<age>` — привітання;
-- `/users/admin` — перенаправлення до привітання адміністратора;
-- `/products/` і `/products/<id>` — каталог та сторінка товару.
+```powershell
+flask --app run.py db init
+flask --app run.py db migrate -m "Initial posts table"
+flask --app run.py db upgrade
+flask --app run.py db migrate -m "Add post status and author"
+flask --app run.py db upgrade
+```
+
+Після зміни моделей створюйте нову міграцію через `flask --app run.py db migrate -m "опис зміни"`, перевіряйте її, а потім застосовуйте `flask --app run.py db upgrade`.
+
+## Лабораторна 7
+
+Використовуйте поточну гілку `lab7`. Вона додає SQLAlchemy Product/Category із зовнішнім ключем, naming convention, еволюцію схеми та ручну data migration.
 
 ## Тести
 
@@ -35,13 +45,4 @@ python run.py
 python -m unittest discover tests -v
 ```
 
-## Розгортання на Render
-
-Файл `render.yaml` налаштовує вебсервіс для гілки `lab4`. У Render Dashboard створіть новий Blueprint для цього репозиторію, виберіть `render.yaml` і застосуйте конфігурацію. Render встановить залежності, запустить Gunicorn і згенерує секретний ключ сесій.
-
-## Лабораторна робота 5
-
-- Контактна WTF-форма: `/contact` (також доступний сумісний шлях `/contacts`). Дані записуються у `logs/contacts.log`.
-- Каталог TinyDB: `/product`; додавання `/product/add`; деталі `/product/<id>`; редагування `/product/<id>/edit`; видалення `/product/<id>/delete`.
-- JSON-сховище: `data/products.json`; завантаження зображень: `app/products/static/uploads/` (до 2 МБ).
-- Тести: `python -m unittest discover tests -v`.
+Відкрити історію Git-комітів: `git log --oneline --decorate`.

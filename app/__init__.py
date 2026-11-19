@@ -1,29 +1,45 @@
 import os
 from pathlib import Path
 
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "local-development-key-change-before-deployment")
-app.config["SESSION_COOKIE_SECURE"] = bool(os.environ.get("RENDER_EXTERNAL_URL"))
-app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024
-app.config["TINYDB_PATH"] = str(Path(__file__).resolve().parent.parent / "data" / "products.json")
-app.config["PRODUCT_UPLOAD_FOLDER"] = str(Path(__file__).resolve().parent / "products" / "static" / "uploads")
-app.config["CONTACT_LOG_PATH"] = str(Path(__file__).resolve().parent.parent / "logs" / "contacts.log")
-
-from app import views  # noqa: E402,F401
-from app.products import products_bp  # noqa: E402
-from app.users import users_bp  # noqa: E402
-
-app.register_blueprint(users_bp, url_prefix="/users")
-app.register_blueprint(products_bp)
+from app.config import config_by_name
+from app.extensions import db, migrate
 
 
-@app.errorhandler(404)
-def page_not_found(error):
-    return "Сторінку не знайдено", 404
+def create_app(config_name=None):
+    config_name = config_name or os.environ.get("APP_CONFIG", "development")
+    config_class = config_by_name.get(config_name)
+    if config_class is None:
+        raise ValueError(f"Unknown application configuration: {config_name}")
+
+    application = Flask(__name__, instance_relative_config=True)
+    application.config.from_object(config_class)
+    Path(application.instance_path).mkdir(parents=True, exist_ok=True)
+
+    db.init_app(application)
+    migrate.init_app(application, db)
+
+    from app import views
+    from app.posts import posts_bp
+    from app.products import products_bp
+    from app.users import users_bp
+    from app.posts import models as post_models  # noqa: F401
+
+    views.register_main_routes(application)
+    application.register_blueprint(users_bp, url_prefix="/users")
+    application.register_blueprint(products_bp)
+    application.register_blueprint(posts_bp)
+
+    @application.errorhandler(404)
+    def page_not_found(error):
+        return render_template("404.html", title="Сторінку не знайдено"), 404
+
+    @application.errorhandler(413)
+    def upload_too_large(error):
+        return "Файл завеликий. Максимальний розмір — 2 МБ.", 413
+
+    return application
 
 
-@app.errorhandler(413)
-def upload_too_large(error):
-    return "Файл завеликий. Максимальний розмір — 2 МБ.", 413
+app = create_app()

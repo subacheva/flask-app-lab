@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from 'partials/_form_macros.html' import render_product_field %}
+{% block content %}
+<section class="post-form-page"><div class="post-form-card"><p class="eyebrow">SQLAlchemy · Flask-WTF</p><h1>{{ heading }}</h1>
+<form method="post" novalidate>{{ form.hidden_tag() }}
+  {{ render_product_field(form.title) }}
+  {{ render_product_field(form.content, rows=8, cols=60) }}
+  {{ render_product_field(form.enabled) }}
+  {{ render_product_field(form.publish_date) }}
+  {{ render_product_field(form.category) }}
+  {{ render_product_field(form.submit) }}
+</form></div></section>
+{% endblock %}
