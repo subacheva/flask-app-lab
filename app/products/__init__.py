@@ -8,4 +8,4 @@ products_bp = Blueprint(
     static_url_path="/products/static",
 )
 
-from app.products import views  # noqa: E402,F401
+from app.products import views

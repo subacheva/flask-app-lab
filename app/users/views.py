@@ -14,7 +14,7 @@ from flask import (
 from app.users import users_bp
 
 
-# Demo credentials for this lab; replace with a real user store in production.
+
 DEMO_USERNAME = "student"
 DEMO_PASSWORD = "flask123"
 COOKIE_KEY_PATTERN = re.compile(r"^[!#$%&'*+.^_`|~0-9A-Za-z-]+$")

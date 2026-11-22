@@ -10,7 +10,7 @@ from app.products import products_bp
 from app.products.forms import DeleteProductForm, ProductForm
 from app.products.store import add_product, all_products, delete_product, get_product, update_product
 
-# Earlier lab demonstration catalog remains available at /products/.
+
 legacy_products = [
     {"id": 1, "name": "Laptop", "price": 1200, "content": "Потужний ноутбук з процесором Intel Core i7, 16 ГБ оперативної пам’яті та SSD на 512 ГБ."},
     {"id": 2, "name": "Phone", "price": 800, "content": "Смартфон із 6.5-дюймовим OLED-дисплеєм, подвійною камерою та акумулятором на 5000 мА·год."},
