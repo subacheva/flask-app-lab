@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Видалити «{{ post.title }}»?</h1><form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn-danger">Видалити</button><a class="btn btn-secondary" href="{{ url_for('posts.detail_post', post_id=post.id) }}">Скасувати</a></form>{% endblock %}

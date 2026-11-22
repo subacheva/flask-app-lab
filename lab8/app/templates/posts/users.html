@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Автори ({{ users|length }})</h1>{% for user in users %}<p>{{ user.id }} · {{ user.username }} · {{ user.email }} · {{ user.posts|length }} постів</p>{% else %}<p>Користувачів немає.</p>{% endfor %}{% endblock %}
